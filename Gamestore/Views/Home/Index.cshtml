@@ -1,9 +1,72 @@
-﻿@{
+﻿@model HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
 
+<div class="nk-gap-3"></div>
+<h3 class="nk-decorated-h-2"><span><span class="text-main-1">Featured</span> Games</span></h3>
+<div class="nk-gap"></div>
+<div class="row vertical-gap">
+
+    @foreach (var item in Model.NewGame)
+    {
+        <div class="col-lg-6">
+            <div class="nk-product-cat-2">
+                <a class="nk-product-image" href="store-product.html">
+                    <img src="@item.ImageURL" alt="Product Image">
+                </a>
+                <div class="nk-product-cont">
+                    <h3 class="nk-product-title h5"><a asp-action="GameProductDetails" asp-route-id="@item.GameID">@item.GameName</a></h3>
+                    <div class="nk-gap-1"></div>
+                    <div class="nk-product-rating" data-rating="3.5"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fas fa-star-half"></i> <i class="far fa-star"></i></div>
+                    <div class="nk-gap-1"></div>
+                    @item.ShortDescription
+                    <div class="nk-gap-2"></div>
+                    <div class="nk-product-price">€ @item.Price</div>
+                    <div class="nk-gap-1"></div>
+                    <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+<!-- END: Featured Games -->
+<!-- START: Most Popular -->
+<div class="nk-gap-3"></div>
+<h3 class="nk-decorated-h-2"><span><span class="text-main-1">Most</span> Popular</span></h3>
+<div class="nk-gap"></div>
+<div class="row vertical-gap">
+
+    @foreach (var item in Model.HotGame)
+    {
+        <div class="col-lg-6">
+            <div class="nk-product-cat-2">
+                <a class="nk-product-image" href="store-product.html">
+                    <img src="@item.ImageURL" alt="Product Image">
+                </a>
+                <div class="nk-product-cont">
+                    <h3 class="nk-product-title h5"><a href="store-product.html">@item.GameName</a></h3>
+                    <div class="nk-gap-1"></div>
+                    <div class="nk-product-rating" data-rating="3.5"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fas fa-star-half"></i> <i class="far fa-star"></i></div>
+                    <div class="nk-gap-1"></div>
+                    @item.ShortDescription
+                    <div class="nk-gap-2"></div>
+                    <div class="nk-product-price">€ @item.Price</div>
+                    <div class="nk-gap-1"></div>
+                    <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+  
+
+</div>
+<!-- END: Most Popular -->
+</div>
