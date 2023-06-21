@@ -2,80 +2,50 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        <a asp-area="Admin" asp-controller="Games" asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.GameName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ShortDescription)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.GameDescription)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Stock)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="courses-area">
+    <div class="container-fluid">
+        <div class="row">
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.GameName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ShortDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.GameDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Stock)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category.CategoryID)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.GameID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.GameID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.GameID">Delete</a>
-                    </td>
-                </tr>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="courses-inner res-mg-b-30">
+                        <div class="courses-title">
+                            <a href="#"><img src="~/Admin/img/courses/game.jpg" alt=""></a>
+                            <h2>@Html.DisplayFor(modelItem => item.GameName)</h2>
+                        </div>
+                        <div class="courses-alaltic">
+                            <span class="cr-ic-r"><span class="course-icon">Release Date:<i class="fa fa-clock"></i></span> @Convert.ToDateTime(item.CreatedDate).ToString("dd/MM/yyyy")</span>
+                        </div>
+                        <div class="courses-alaltic">
+                            <span class="cr-ic-r"><span class="course-icon">Price: <i class="fa fa-dollar"></i></span>@Html.DisplayFor(modelItem => item.Price)</span>
+                        </div>
+                        <div class="courses-alaltic">
+                            <span class="cr-ic-r"><span class="course-icon">Stock: <i class="fa fa-dollar"></i></span>@Html.DisplayFor(modelItem => item.Stock)</span>
+                        </div>
+                        <div class="courses-alaltic">
+                            <span class="cr-ic-r"><span class="course-icon">Category: <i class="fa fa-dollar"></i></span>@Html.DisplayFor(modelItem => item.Category.CategoryID)</span>
+                        </div>
+                        <div class="course-des">
+                            <p><span><i class="fa fa-clock"></i></span> <b>Short Description:</b> @Html.DisplayFor(modelItem => item.ShortDescription)</p>
+                            <p><span><i class="fa fa-clock"></i></span> <b>Game Description:</b> @Html.DisplayFor(modelItem => item.GameDescription))</p>
+                        </div>
+                        <td>
+
+                            <a asp-action="Edit" asp-route-id="@item.GameID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.GameID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.GameID">Delete</a>
+                        </td>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
-</body>
-</html>
+        </div>
+    </div>
+</div>

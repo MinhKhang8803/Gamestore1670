@@ -2,10 +2,82 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
+<div class="single-pro-review-area mt-t-30 mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="profile-info-inner">
+                    <div class="profile-img">
+                        <img src="img/profile/1.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                <div class="product-payment-inner-st res-mg-t-30 analysis-progrebar-ctn">
+                    <ul id="myTabedu1" class="tab-review-design">
+                        <li class="Information"><a href="#description">Activity</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content custom-product-edit st-prf-pro">
+                        <div class="product-tab-list tab-pane fade active in" id="description">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                <div class="address-hr biography">
+                                                    <p><b>Full Name</b><br />@Html.DisplayFor(model => model.GameName)</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                <div class="address-hr biography">
+                                                    <p><b>Price</b><br /> @Html.DisplayFor(model => model.Price)</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                <div class="address-hr biography">
+                                                    <p><b>Stock:</b><br /> @Html.DisplayFor(model => model.Stock)</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                <div class="address-hr biography">
+                                                    <p><b>Created Date:</b><br /> @Html.DisplayFor(model => model.CreatedDate)</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                                <div class="address-hr biography">
+                                                    <p><b>Category:</b><br />@Html.DisplayFor(model => model.Category.CategoryID)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="content-profile">
+                                                    <p>
+                                                        <b>Short Description</b>
+                                                        @Html.DisplayFor(model => model.ShortDescription)
+                                                        <b>Description</b>
+                                                        @Html.DisplayFor(model => model.GameDescription)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <html>
 <head>
@@ -18,30 +90,14 @@
         <h4>Game</h4>
         <hr />
         <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.GameName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GameName)
             </dd>
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.ShortDescription)
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.ShortDescription)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.GameDescription)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GameDescription)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Price)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Price)
-            </dd>
+
+
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Stock)
             </dt>
