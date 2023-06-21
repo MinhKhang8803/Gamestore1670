@@ -18,7 +18,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="courses-inner res-mg-b-30">
                         <div class="courses-title">
-                            <a href="#"><img src="~/Admin/img/courses/game.jpg" alt=""></a>
+                            <a asp-action="Details" asp-route-id="@item.GameID"><img src="@Html.DisplayFor(modelItem => item.ImageURL)" alt=""></a>
                             <h2>@Html.DisplayFor(modelItem => item.GameName)</h2>
                         </div>
                         <div class="courses-alaltic">
@@ -28,10 +28,10 @@
                             <span class="cr-ic-r"><span class="course-icon">Price: <i class="fa fa-dollar"></i></span>@Html.DisplayFor(modelItem => item.Price)</span>
                         </div>
                         <div class="courses-alaltic">
-                            <span class="cr-ic-r"><span class="course-icon">Stock: <i class="fa fa-dollar"></i></span>@Html.DisplayFor(modelItem => item.Stock)</span>
+                            <span class="cr-ic-r"><span class="course-icon">Stock:</span>@Html.DisplayFor(modelItem => item.Stock)</span>
                         </div>
                         <div class="courses-alaltic">
-                            <span class="cr-ic-r"><span class="course-icon">Category: <i class="fa fa-dollar"></i></span>@Html.DisplayFor(modelItem => item.Category.CategoryID)</span>
+                            <span class="cr-ic-r"><span class="course-icon">Category:</span>@Html.DisplayFor(modelItem => item.Category.CategoryID)</span>
                         </div>
                         <div class="course-des">
                             <p><span><i class="fa fa-clock"></i></span> <b>Short Description:</b> @Html.DisplayFor(modelItem => item.ShortDescription)</p>
