@@ -1,0 +1,49 @@
+﻿@model Gamestore.Areas.Admin.Models.Users
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gaming Login Form Responsive Widget Template  :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Gaming Login Form Widget Tab Form,Login Forms,Sign up Forms,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+    <div class="padding-all">
+        <div class="header">
+            <h1><img src="./images/5.png" alt=" "> Gaming Register Form</h1>
+        </div>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+           @Html.AntiForgeryToken()
+            <div class="design-w3l">
+                <div class="mail-form-agile">
+                    <form action="#" method="post">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control rounded", @placeholder = "Enter Username" })
+                        @Html.TextBoxFor(model => model.UserEmail, new { @class = "form-control rounded", @placeholder = "Enter Email" })
+                        @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control rounded", @placeholder = "Enter Password", @id = "password-input" })
+                        @Html.TextBoxFor(model => model.UserPhone, new { @class = "form-control rounded", @placeholder = "Enter Phone Number" })
+                        @Html.TextBoxFor(model => model.UserAddress, new { @class = "form-control rounded", @placeholder = "Enter Address" })
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                        </div>
+                    </form>
+                </div>
+                <div class="clear"> </div>
+            </div>
+        }
+
+        <div class="footer">
+            <p>© 2017 Gaming Login form. All Rights Reserved | Design by  <a href="https://w3layouts.com/">  w3layouts </a></p>
+        </div>
+    </div>
+</body>
+</html>
