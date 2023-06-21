@@ -62,6 +62,7 @@ namespace Gamestore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                game.CreatedDate = DateTime.Now;
                 _context.Add(game);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
