@@ -20,5 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Views\Account\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Account\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,23 @@
+﻿@using Gamestore.Areas.Admin.Models;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    var user = (Users)ViewBag.User;
+    <div class="user-infor">
+        <h1>Welcome, @user.UserName</h1>
+        <p><strong>Email:</strong> @user.UserEmail</p>
+        <p><strong>Address:</strong> @user.UserAddress</p>
+        <p><strong>Phone:</strong> @user.UserPhone</p>
+        <a href="/Account/Logout">Logout</a>
+    </div>
+}
+else
+{
+    <div class="alert">
+        <p>Access Denied! Please log in to access user details. Go to the <a href="/Account/Login">Login Page</a>.</p>
+    </div>
+}
