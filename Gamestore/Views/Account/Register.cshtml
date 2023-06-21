@@ -26,7 +26,6 @@
            @Html.AntiForgeryToken()
             <div class="design-w3l">
                 <div class="mail-form-agile">
-                    <form action="#" method="post">
                         @Html.TextBoxFor(model => model.UserName, new { @class = "form-control rounded", @placeholder = "Enter Username" })
                         @Html.TextBoxFor(model => model.UserEmail, new { @class = "form-control rounded", @placeholder = "Enter Email" })
                         @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control rounded", @placeholder = "Enter Password", @id = "password-input" })
@@ -35,7 +34,6 @@
                         <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
                         </div>
-                    </form>
                 </div>
                 <div class="clear"> </div>
             </div>

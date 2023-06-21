@@ -25,7 +25,7 @@ namespace Gamestore.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Users = GetCurrentUserInformation();
+            ViewBag.User = GetCurrentUserInformation();
             return View();
         }
 
