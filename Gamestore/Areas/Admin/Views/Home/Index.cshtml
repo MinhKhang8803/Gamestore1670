@@ -27,11 +27,10 @@
                             <span class="cr-ic-r"><span class="course-icon">Stock:</span>@Html.DisplayFor(modelItem => item.Stock)</span>
                         </div>
                         <div class="courses-alaltic">
-                            <span class="cr-ic-r"><span class="course-icon">Category:</span>@Html.DisplayFor(modelItem => item.Category.CategoryID)</span>
+                            <span class="cr-ic-r"><span class="course-icon">Category:</span>@Html.DisplayFor(modelItem => item.Category.CategoryName)</span>
                         </div>
                         <div class="course-des">
                             <p><span><i class="fa fa-clock"></i></span> <b>Short Description:</b> @Html.DisplayFor(modelItem => item.ShortDescription)</p>
-                            <p><span><i class="fa fa-clock"></i></span> <b>Game Description:</b> @Html.DisplayFor(modelItem => item.GameDescription)</p>
                         </div>
                     </div>
                 </div>
