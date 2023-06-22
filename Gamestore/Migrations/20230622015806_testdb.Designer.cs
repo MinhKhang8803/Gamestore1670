@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gamestore.Migrations
 {
     [DbContext(typeof(GamestoreContext))]
-    [Migration("20230620153034_gamestore")]
-    partial class gamestore
+    [Migration("20230622015806_testdb")]
+    partial class testdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,7 +123,7 @@ namespace Gamestore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderDetailID"));
 
-                    b.Property<int?>("GameID")
+                    b.Property<int>("GameID")
                         .HasColumnType("int");
 
                     b.Property<int>("OrderID")
@@ -131,9 +131,6 @@ namespace Gamestore.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
-
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -207,10 +204,7 @@ namespace Gamestore.Migrations
                     b.Property<int>("CartID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GameID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductID")
+                    b.Property<int>("GameID")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -255,7 +249,9 @@ namespace Gamestore.Migrations
                 {
                     b.HasOne("Gamestore.Areas.Admin.Models.Game", "Games")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("GameID");
+                        .HasForeignKey("GameID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Gamestore.Areas.Admin.Models.Order", "Orders")
                         .WithMany()
@@ -289,7 +285,9 @@ namespace Gamestore.Migrations
 
                     b.HasOne("Gamestore.Areas.Admin.Models.Game", "Games")
                         .WithMany("CartDetails")
-                        .HasForeignKey("GameID");
+                        .HasForeignKey("GameID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Carts");
 

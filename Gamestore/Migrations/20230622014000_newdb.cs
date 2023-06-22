@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Gamestore.Migrations
 {
     /// <inheritdoc />
-    public partial class gamestore : Migration
+    public partial class newdb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -95,8 +95,7 @@ namespace Gamestore.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     CartID = table.Column<int>(type: "int", nullable: false),
-                    ProductID = table.Column<int>(type: "int", nullable: false),
-                    GameID = table.Column<int>(type: "int", nullable: true)
+                    GameID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -111,7 +110,8 @@ namespace Gamestore.Migrations
                         name: "FK_CartDetail_Game_GameID",
                         column: x => x.GameID,
                         principalTable: "Game",
-                        principalColumn: "GameID");
+                        principalColumn: "GameID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

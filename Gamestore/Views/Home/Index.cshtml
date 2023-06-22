@@ -26,7 +26,12 @@
                     <div class="nk-gap-2"></div>
                     <div class="nk-product-price">€ @item.Price</div>
                     <div class="nk-gap-1"></div>
-                    <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Add to Cart</a>
+                        <form asp-controller="Cart" asp-action="CartDetails" method="post">
+                            <input type="hidden" name="productId" value="@item.GameID" />
+                            <input type="hidden" name="quantity" value="1" />
+                            <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Ddd to cart</button>
+                        </form>
+
                 </div>
             </div>
         </div>
@@ -57,7 +62,11 @@
                     <div class="nk-gap-2"></div>
                     <div class="nk-product-price">€ @item.Price</div>
                     <div class="nk-gap-1"></div>
-                    <a href="#" class="nk-btn nk-btn-rounded nk-btn-color-dark-3 nk-btn-hover-color-main-1">Add to Cart</a>
+                    <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                        <input type="hidden" name="productId" value="@item.GameID" />
+                        <input type="hidden" name="quantity" value="1" />
+                        <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ using Gamestore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gamestore.Migrations
 {
     [DbContext(typeof(GamestoreContext))]
-    partial class GamestoreContextModelSnapshot : ModelSnapshot
+    [Migration("20230622014000_newdb")]
+    partial class newdb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,7 +123,7 @@ namespace Gamestore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderDetailID"));
 
-                    b.Property<int>("GameID")
+                    b.Property<int?>("GameID")
                         .HasColumnType("int");
 
                     b.Property<int>("OrderID")
@@ -128,6 +131,9 @@ namespace Gamestore.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -246,9 +252,7 @@ namespace Gamestore.Migrations
                 {
                     b.HasOne("Gamestore.Areas.Admin.Models.Game", "Games")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("GameID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GameID");
 
                     b.HasOne("Gamestore.Areas.Admin.Models.Order", "Orders")
                         .WithMany()

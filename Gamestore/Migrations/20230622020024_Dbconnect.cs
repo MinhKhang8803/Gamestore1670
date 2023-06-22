@@ -5,7 +5,7 @@
 namespace Gamestore.Migrations
 {
     /// <inheritdoc />
-    public partial class Updatehome : Migration
+    public partial class Dbconnect : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

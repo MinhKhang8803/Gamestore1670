@@ -12,7 +12,7 @@ namespace Gamestore.Models
 
         // Foreign keys
         public int CartID { get; set; }
-        public int ProductID { get; set; }
+        public int GameID { get; set; }
 
         // Navigation properties
         [ForeignKey("CartID")]

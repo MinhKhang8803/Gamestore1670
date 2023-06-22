@@ -13,7 +13,7 @@ namespace Gamestore.Areas.Admin.Models
 
         // Foreign keys
         public int OrderID { get; set; }
-        public int ProductID { get; set; }
+        public int GameID { get; set; }
 
         // Navigation properties
         [ForeignKey("OrderID")]

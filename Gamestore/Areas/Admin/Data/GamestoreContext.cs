@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Gamestore.Areas.Admin.Models;
+using Gamestore.Models;
 
 namespace Gamestore.Data
 {
@@ -19,5 +20,7 @@ namespace Gamestore.Data
         public DbSet<Gamestore.Areas.Admin.Models.Game> Game { get; set; } = default!;
 
         public DbSet<Gamestore.Areas.Admin.Models.Category> Category { get; set; } = default!;
+
+        public DbSet<Gamestore.Models.Cart> Cart { get; set; } = default!;
     }
 }
