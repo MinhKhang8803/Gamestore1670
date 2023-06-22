@@ -43,9 +43,7 @@ public class HomeController : Controller
             return NotFound();
         }
 
-        // Increase view count
-        Game.ViewCount += 1;
-        await _context.SaveChangesAsync();
+  
 
         return View(Game);
 
