@@ -26,10 +26,10 @@
                     <div class="nk-gap-2"></div>
                     <div class="nk-product-price">€ @item.Price</div>
                     <div class="nk-gap-1"></div>
-                        <form asp-controller="Cart" asp-action="CartDetails" method="post">
-                            <input type="hidden" name="productId" value="@item.GameID" />
+                    <form asp-controller="Cart" asp-action="AddToCart" asp-route-id = "@item.GameID" method="post">
+                            <input type="hidden" name="gameId" value="@item.GameID" />
                             <input type="hidden" name="quantity" value="1" />
-                            <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Ddd to cart</button>
+                            <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                         </form>
 
                 </div>

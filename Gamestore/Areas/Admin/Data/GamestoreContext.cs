@@ -20,6 +20,7 @@ namespace Gamestore.Data
         public DbSet<Gamestore.Areas.Admin.Models.Game> Game { get; set; } = default!;
 
         public DbSet<Gamestore.Areas.Admin.Models.Category> Category { get; set; } = default!;
+        public DbSet<Gamestore.Models.CartDetail> CartDetail { get; set; } = default!;
 
         public DbSet<Gamestore.Models.Cart> Cart { get; set; } = default!;
     }

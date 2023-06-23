@@ -1,0 +1,81 @@
+﻿@model Gamestore.Models.Cart
+
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Billing Details -->
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">Billing address</h3>
+                    </div>
+                    @using (Html.BeginForm("PlaceOrder", "Checkout", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input class="hidden" type="text" name="UserId" value="@Model.Users.UserId" placeholder="User Name">
+                        <input class="hidden" type="text" name="CartID" value="@Model.CartID" placeholder="User Name">
+                        <div class="form-group">
+                            <input class="input" type="text" name="UserName" value="@Model.Users.UserName" placeholder="User Name">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="email" name="UserEmail" value="@Model.Users.UserEmail" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="text" name="UserAddress" value="@Model.Users.UserAddress" placeholder="Address">
+                        </div>
+                        <div class="form-group">
+                            <input class="input" type="tel" name="UserPhone" value="@Model.Users.UserPhone" placeholder="Phone">
+                        </div>
+                        <div class="form-group">
+                            <label><input type="checkbox" name="SaveAddress"> Save this address for next time</label>
+                        </div>
+                        <button type="submit" class="primary-btn order-submit">Place order</button>
+                    }
+                </div>
+                <!-- /Billing Details -->
+            </div>
+
+            <!-- Order Details -->
+            <div class="col-md-5 order-details">
+                <div class="section-title text-center">
+                    <h3 class="title">Your Order</h3>
+                </div>
+                <div class="order-summary">
+                    <!-- ... -->
+                    <div class="order-products">
+                        @foreach (var cartDetail in Model.CartDetails)
+                        {
+                            <div class="order-col">
+                                <div>@cartDetail.Quantity x @cartDetail.Game.GameName</div>
+                                <div>@(cartDetail.Quantity * cartDetail.Game.Price)</div>
+                            </div>
+                        }
+                        <div class="order-col">
+                            <strong>TOTAL: $</strong>
+                            <div><strong>@Model.CartDetails.Sum(cd => cd.Quantity * cd.Game .Price)</strong></div>
+                        </div>
+
+                    </div>
+                    <!-- ... -->
+                </div>
+                <!-- ... -->
+            </div>
+
+
+            <!-- /Order Details -->
+        </div>
+        <!-- /Order Details -->
+    </div>
+    <!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- /SECTION -->

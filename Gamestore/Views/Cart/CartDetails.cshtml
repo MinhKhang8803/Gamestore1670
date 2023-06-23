@@ -27,6 +27,14 @@
 <!-- END: Breadcrumbs -->
 
 
+@if (Model.CartDetails.Count == 0)
+    {
+        <div class="text-center">
+            <p>Your cart is empty.</p>
+            <a href="@Url.Action("Index", "Games")" class="btn btn-primary">Continue Shopping</a>
+        </div>
+    }
+else{
 
 
 <div class="container">
@@ -49,14 +57,14 @@
                                 <div class="nk-gap-1"></div>
 
                                 <h2 class="nk-post-title h4">
-                                    <a href="store-product.html">@item.Games.GameName</a>
+                                    <a href="store-product.html">@item.Game.GameName</a>
                                 </h2>
                             </td>
                             <td class="nk-product-cart-price">
                                 <h5 class="h6">Price:</h5>
                                 <div class="nk-gap-1"></div>
 
-                                <strong>@item.Games.Price</strong>
+                                <strong>@item.Game.Price</strong>
                             </td>
                             <td class="nk-product-cart-quantity">
                                 <h5 class="h6">Quantity:</h5>
@@ -70,7 +78,7 @@
                                 <h5 class="h6">Total:</h5>
                                 <div class="nk-gap-1"></div>
 
-                                <strong>@(item.Games.Price * item.Quantity)</strong>
+                                <strong>@(item.Game.Price * item.Quantity)</strong>
                             </td>
                             <td class="nk-product-cart-remove"><a href="#"><span class="ion-android-close"></span></a></td>
                         </tr>
@@ -152,10 +160,59 @@
         </div>
 
         <div class="nk-gap-2"></div>
-        <a class="nk-btn nk-btn-rounded nk-btn-color-main-1 float-right" href="store-checkout.html">Proceed to Checkout</a>
+            @using (Html.BeginForm("PlaceOrder", "Checkout", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="billing-details">
+                                    <div class="section-title">
+                                        <h3 class="title">Billing address</h3>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="CartID" value="@Model.CartID" placeholder="Cart ID">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="UserID" value="@Model.Users.UserId" placeholder="User ID">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="UserName" value="@Model.Users.UserName" placeholder="User Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="email" name="UserEmail" value="@Model.Users.UserEmail" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="UserAddress" value="@Model.Users.UserAddress" placeholder="Address">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="tel" name="UserPhone" value="@Model.Users.UserPhone" placeholder="Phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><input type="checkbox" name="SaveAddress"> Save this address for next time</label>
+                                    </div>
+                                    <button type="submit" class="primary-btn order-submit">Place order</button>
+                                </div>
+                            </div>
+                            <div class="col-md-5 order-details">
+                                <div class="section-title text-center">
+                                    <h3 class="title">Your Order</h3>
+                                </div>
+                                <div class="order-summary">
+                                    <!-- ... -->
+                                </div>
+                                <!-- ... -->
+                            </div>
+                            <!-- ... -->
+                        </div>
+                    </div>
+                </div>
+            }
         <div class="clearfix"></div>
     </div>
 </div>
 
 <div class="nk-gap-2"></div>
-
+}

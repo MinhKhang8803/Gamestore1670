@@ -16,10 +16,10 @@ namespace Gamestore.Models
 
         // Navigation properties
         [ForeignKey("CartID")]
-        public Cart? Carts { get; set; }
+        public Cart? Cart { get; set; }
 
         [ForeignKey("GameID")]
-        public Game? Games { get; set; }
+        public Game? Game { get; set; }
     }
 }
 
