@@ -20,8 +20,8 @@
                     @using (Html.BeginForm("PlaceOrder", "Checkout", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
-                        <input class="hidden" type="text" name="UserId" value="@Model.Users.UserId" placeholder="User Name">
-                        <input class="hidden" type="text" name="CartID" value="@Model.CartID" placeholder="User Name">
+                        <input class="hidden" type="hidden" name="UserId" value="@Model.Users.UserId" placeholder="User Name">
+                        <input class="hidden" type="hidden" name="CartID" value="@Model.CartID" placeholder="User Name">
                         <div class="form-group">
                             <input class="input" type="text" name="UserName" value="@Model.Users.UserName" placeholder="User Name">
                         </div>
@@ -33,9 +33,6 @@
                         </div>
                         <div class="form-group">
                             <input class="input" type="tel" name="UserPhone" value="@Model.Users.UserPhone" placeholder="Phone">
-                        </div>
-                        <div class="form-group">
-                            <label><input type="checkbox" name="SaveAddress"> Save this address for next time</label>
                         </div>
                         <button type="submit" class="primary-btn order-submit">Place order</button>
                     }
@@ -60,7 +57,7 @@
                         }
                         <div class="order-col">
                             <strong>TOTAL: $</strong>
-                            <div><strong>@Model.CartDetails.Sum(cd => cd.Quantity * cd.Game .Price)</strong></div>
+                            <div><strong>@Model.CartDetails.Sum(cd => cd.Quantity * cd.Game.Price)</strong></div>
                         </div>
 
                     </div>
@@ -78,4 +75,3 @@
 </div>
 <!-- /container -->
 </div>
-<!-- /SECTION -->

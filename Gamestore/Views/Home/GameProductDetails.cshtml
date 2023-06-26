@@ -35,21 +35,20 @@
 
                             <!-- START: Add to Cart -->
                             <div class="nk-gap-2"></div>
-                            <form action="#" class="nk-product-addtocart">
+                        <form asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.GameID" method="post">
                                 <div class="nk-product-price">€ @Model.Price</div>
                                 <div class="nk-gap-1"></div>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" value="1" min="1" max="21">
-                                    <button class="nk-btn nk-btn-rounded nk-btn-color-main-1">Add to Cart</button>
+                                <input type="hidden" name="gameId" value="@Model.GameID" />
+                                <input type="hidden" name="quantity" value="1" />
+                                <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                                 </div>
                             </form>
                             <div class="nk-gap-3"></div>
                             <!-- END: Add to Cart -->
                             <!-- START: Meta -->
                             <div class="nk-product-meta">
-                                <div><strong>SKU</strong>: 300-200-503</div>
-                                <div><strong>Categories</strong>: <a href="#">online</a>, <a href="#">FPS</a>, <a href="#">MMO</a>, <a href="#">Action games</a></div>
-                                <div><strong>Tags</strong>: <a href="#">blizzard</a>, <a href="#">action</a>, <a href="#">MMO</a></div>
+                                <div><strong>Categories</strong>: @Model.Category.CategoryName</div>
                             </div>
                             <!-- END: Meta -->
                         </div>
